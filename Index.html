@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Inspection Report - 17 Beacon Ave, Auburn, ME</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- React and ReactDOM -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    
+    <!-- Babel Standalone for JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <style>
+        /* RTL Support */
+        [dir="rtl"] {
+            direction: rtl;
+        }
+        
+        /* Custom animations */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .animate-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState } = React;
+
+        // Lucide Globe Icon Component
+        const Globe = ({ size = 24 }) => (
+            <svg 
+                width={size} 
+                height={size} 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor" 
+                strokeWidth="2" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"
+            >
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+        );
+
+        const BilingualInspectionReport = () => {
+            const [lang, setLang] = useState('en');
+            
+            const content = {
+                en: {
+                    title: "Home Inspection Analysis",
+                    address: "17 Beacon Ave, Auburn, ME 04210",
+                    date: "Inspection Date: October 16, 2025",
+                    contract: "Current Contract: $400,000",
+                    
+                    execSummary: "Executive Summary",
+                    execText: "This 1904 multi-family property (3 units) has extensive and significant issues across nearly every major system. Many findings represent serious safety hazards and major structural concerns. This property will require substantial investment beyond the purchase price.",
+                    
+                    critical: "CRITICAL SAFETY HAZARDS",
+                    criticalSub: "Immediate Attention Required",
+                    
+                    structural: "Structural Integrity",
+                    structuralItems: [
+                        "Major foundation damage and wall bowing - Significant structural movement requiring structural engineer evaluation",
+                        "Garage is unsafe - Marked for removal or major structural repairs",
+                        "Deck support posts are unsecured - Shifted and lack proper footings below frost line"
+                    ],
+                    
+                    electrical: "Electrical System",
+                    electricalItems: [
+                        "Ungrounded 3-prong outlets - Users believe they're protected when they're not",
+                        "Outdated knob & tube wiring - May affect insurance eligibility",
+                        "Loose wires and exposed electrical components - Multiple shock/fire hazards",
+                        "Service inadequate for building - Undersized for modern needs",
+                        "Missing GFCI protection in wet areas",
+                        "Missing AFCI protection in bedrooms"
+                    ],
+                    
+                    fire: "Fire/Carbon Monoxide Risks",
+                    fireItems: [
+                        "Smoke detectors over 10 years old - Need replacement",
+                        "Missing/inadequate smoke detector coverage",
+                        "No carbon monoxide detectors in required locations",
+                        "Chimney severely deteriorated - Brick and mortar damage",
+                        "Furnace vent not properly sealed - Toxic gases can enter living space",
+                        "Inoperable fireplace damper - Cannot safely vent combustion products"
+                    ],
+                    
+                    water: "Water Hazards",
+                    waterItems: [
+                        "Hot water exceeding 139°F in multiple units (scalding risk - safe limit is 125°F)",
+                        "Scalding can occur in seconds at these temperatures"
+                    ],
+                    
+                    health: "Health Hazards",
+                    healthItems: [
+                        "Suspected mold in multiple locations throughout all units",
+                        "Bat infestation evidence (Apt 2) - Potential rabies/histoplasmosis risk",
+                        "Significant rodent activity throughout",
+                        "Possible asbestos flooring (pre-1973 materials)"
+                    ],
+                    
+                    immediate: "IMMEDIATE REPAIR PRIORITIES",
+                    immediateSub: "Safety & Habitability Issues",
+                    
+                    tier1: "TIER 1: Critical Safety (Before Closing)",
+                    tier1Cost: "$6,000 - $16,500",
+                    tier1Items: [
+                        "Electrical Safety: Loose wires, missing covers, damaged receptacles",
+                        "Scalding Water: Adjust boiler temperature to safe levels",
+                        "Structural Safety: Secure deck posts and railings",
+                        "Fire/CO Safety: Install/replace smoke and CO detectors"
+                    ],
+                    
+                    tier2: "TIER 2: Urgent Repairs (30-60 Days)",
+                    tier2Cost: "$10,000 - $26,000",
+                    tier2Items: [
+                        "Mold Assessment & Remediation throughout building",
+                        "Pest Control: Bat and rodent removal",
+                        "Active Water Leaks: Find source and repair damage",
+                        "Plumbing Safety: Sewage pump, fixtures, shower panels",
+                        "Electrical GFCI Protection in wet areas",
+                        "Heating System: Service boiler, test oil tank"
+                    ],
+                    
+                    tier3: "TIER 3: High Priority (90 Days)",
+                    tier3Cost: "$15,000 - $35,000",
+                    tier3Items: [
+                        "Exterior Water Prevention: Downspouts, gutters, roofing",
+                        "Foundation Drainage: Grading, moisture barriers",
+                        "Window Safety: Replace cracked glass, repair sills",
+                        "Chimney Safety: Masonry repairs, install cap",
+                        "Exterior Rot: Address critical water entry areas"
+                    ],
+                    
+                    totalImmediate: "TOTAL IMMEDIATE REPAIRS (90 days)",
+                    totalCost: "$31,000 - $77,500",
+                    
+                    assessments: "Required Professional Assessments",
+                    assessmentsCost: "$2,500 - $4,700",
+                    assessmentItems: [
+                        "Licensed Electrician Full Evaluation: $500-$1,000",
+                        "Licensed Plumber Full Evaluation: $500-$1,000",
+                        "Structural Engineer Assessment: $800-$1,500",
+                        "Professional Mold Inspection: $500-$800",
+                        "Pest Inspection (Bats/Rodents): $200-$400"
+                    ],
+                    
+                    costs: "COST IMPLICATIONS",
+                    immediateCosts: "Immediate (Pre-Closing): $5,000-$15,000+",
+                    year1Costs: "Short-Term (Year 1): $30,000-$75,000+",
+                    year2to5Costs: "Medium-Term (Years 2-5): $50,000-$100,000+",
+                    
+                    recommendations: "RECOMMENDATIONS",
+                    recItems: [
+                        "Do NOT close without specialist evaluations",
+                        "Negotiate heavily - This property needs $100,000+ in repairs",
+                        "Request seller credit of $50,000-$80,000 OR reduce purchase price",
+                        "Consider walking away unless deeply discounted",
+                        "Verify insurance availability (knob & tube wiring may be an issue)"
+                    ],
+                    
+                    bottomLine: "BOTTOM LINE",
+                    bottomText: "At your current contract price of $400,000, you're looking at needing an additional 8-20% immediately just to make the property safe. This is a high-risk purchase requiring substantial capital beyond the purchase price.",
+                    
+                    totalRepairs: "Estimated Total Repair Costs",
+                    repairRange: "$100,000 - $200,000+ over 5 years",
+                    year1Range: "$35,000 - $90,000 needed in Year 1"
+                },
+                
+                ar: {
+                    title: "تحليل تقرير فحص المنزل",
+                    address: "17 شارع بيكون، أوبورن، مين 04210",
+                    date: "تاريخ الفحص: 16 أكتوبر 2025",
+                    contract: "قيمة العقد الحالي: 400,000 دولار",
+                    
+                    execSummary: "الملخص التنفيذي",
+                    execText: "هذا العقار متعدد العائلات المبني عام 1904 (3 وحدات) يحتوي على مشاكل واسعة وخطيرة في جميع الأنظمة الرئيسية تقريباً. العديد من النتائج تمثل مخاطر سلامة خطيرة ومخاوف هيكلية كبيرة. سيتطلب هذا العقار استثماراً كبيراً بالإضافة إلى سعر الشراء.",
+                    
+                    critical: "مخاطر السلامة الحرجة",
+                    criticalSub: "تتطلب اهتماماً فورياً",
+                    
+                    structural: "السلامة الهيكلية",
+                    structuralItems: [
+                        "أضرار كبيرة في الأساس وانحناء الجدار - حركة هيكلية كبيرة تتطلب تقييم مهندس إنشائي",
+                        "المرآب غير آمن - يحتاج إلى إزالة أو إصلاحات هيكلية كبيرة",
+                        "أعمدة دعم السطح غير مثبتة - متحركة وتفتقر إلى قواعد مناسبة تحت خط الصقيع"
+                    ],
+                    
+                    electrical: "النظام الكهربائي",
+                    electricalItems: [
+                        "مقابس 3 أطراف غير مؤرضة - يعتقد المستخدمون أنهم محميون بينما هم ليسوا كذلك",
+                        "أسلاك قديمة - قد تؤثر على أهلية التأمين",
+                        "أسلاك مفكوكة ومكونات كهربائية مكشوفة - مخاطر صدمة/حريق متعددة",
+                        "الخدمة غير كافية للمبنى - صغيرة جداً للاحتياجات الحديثة",
+                        "حماية GFCI مفقودة في المناطق الرطبة",
+                        "حماية AFCI مفقودة في غرف النوم"
+                    ],
+                    
+                    fire: "مخاطر الحريق/أول أكسيد الكربون",
+                    fireItems: [
+                        "أجهزة كشف الدخان أكثر من 10 سنوات - تحتاج للاستبدال",
+                        "تغطية غير كافية لكاشفات الدخان",
+                        "لا توجد كاشفات أول أكسيد الكربون في المواقع المطلوبة",
+                        "مدخنة متدهورة بشدة - تلف في الطوب والملاط",
+                        "فتحة تهوية الفرن غير محكمة الإغلاق - يمكن للغازات السامة دخول المساحة المعيشية",
+                        "صمام مدخنة المدفأة لا يعمل - لا يمكن تهوية منتجات الاحتراق بأمان"
+                    ],
+                    
+                    water: "مخاطر المياه",
+                    waterItems: [
+                        "المياه الساخنة تتجاوز 139 درجة فهرنهايت في وحدات متعددة (خطر الحروق - الحد الآمن 125 درجة فهرنهايت)",
+                        "يمكن أن تحدث حروق خطيرة في ثوانٍ عند هذه درجات الحرارة"
+                    ],
+                    
+                    health: "المخاطر الصحية",
+                    healthItems: [
+                        "عفن مشتبه به في مواقع متعددة في جميع الوحدات",
+                        "دليل على إصابة بالخفافيش (الشقة 2) - خطر محتمل من داء الكلب/داء النوسجات",
+                        "نشاط كبير للقوارض في جميع الأنحاء",
+                        "أرضيات أسبستوس محتملة (مواد ما قبل 1973)"
+                    ],
+                    
+                    immediate: "أولويات الإصلاح الفورية",
+                    immediateSub: "قضايا السلامة والصلاحية للسكن",
+                    
+                    tier1: "المستوى الأول: السلامة الحرجة (قبل الإغلاق)",
+                    tier1Cost: "6,000 - 16,500 دولار",
+                    tier1Items: [
+                        "السلامة الكهربائية: أسلاك مفكوكة، أغطية مفقودة، مقابس تالفة",
+                        "المياه الساخنة: ضبط حرارة المرجل إلى مستويات آمنة",
+                        "السلامة الهيكلية: تأمين أعمدة ودرابزين السطح",
+                        "سلامة الحريق/أول أكسيد الكربون: تركيب/استبدال كاشفات الدخان وأول أكسيد الكربون"
+                    ],
+                    
+                    tier2: "المستوى الثاني: إصلاحات عاجلة (30-60 يوماً)",
+                    tier2Cost: "10,000 - 26,000 دولار",
+                    tier2Items: [
+                        "تقييم ومعالجة العفن في جميع أنحاء المبنى",
+                        "مكافحة الآفات: إزالة الخفافيش والقوارض",
+                        "تسربات المياه النشطة: العثور على المصدر وإصلاح الضرر",
+                        "سلامة السباكة: مضخة الصرف الصحي، التركيبات، لوحات الدش",
+                        "حماية GFCI الكهربائية في المناطق الرطبة",
+                        "نظام التدفئة: صيانة المرجل، اختبار خزان الزيت"
+                    ],
+                    
+                    tier3: "المستوى الثالث: أولوية عالية (90 يوماً)",
+                    tier3Cost: "15,000 - 35,000 دولار",
+                    tier3Items: [
+                        "منع المياه الخارجية: مصارف المطر، المزاريب، الأسقف",
+                        "صرف الأساس: التدرج، حواجز الرطوبة",
+                        "سلامة النوافذ: استبدال الزجاج المتشقق، إصلاح العتبات",
+                        "سلامة المدخنة: إصلاحات البناء، تركيب غطاء",
+                        "التعفن الخارجي: معالجة مناطق دخول المياه الحرجة"
+                    ],
+                    
+                    totalImmediate: "إجمالي الإصلاحات الفورية (90 يوماً)",
+                    totalCost: "31,000 - 77,500 دولار",
+                    
+                    assessments: "التقييمات المهنية المطلوبة",
+                    assessmentsCost: "2,500 - 4,700 دولار",
+                    assessmentItems: [
+                        "تقييم كامل من كهربائي مرخص: 500-1,000 دولار",
+                        "تقييم كامل من سباك مرخص: 500-1,000 دولار",
+                        "تقييم مهندس إنشائي: 800-1,500 دولار",
+                        "فحص العفن المهني: 500-800 دولار",
+                        "فحص الآفات (الخفافيش/القوارض): 200-400 دولار"
+                    ],
+                    
+                    costs: "آثار التكلفة",
+                    immediateCosts: "فوري (قبل الإغلاق): 5,000-15,000+ دولار",
+                    year1Costs: "قصير المدى (السنة الأولى): 30,000-75,000+ دولار",
+                    year2to5Costs: "متوسط المدى (السنوات 2-5): 50,000-100,000+ دولار",
+                    
+                    recommendations: "التوصيات",
+                    recItems: [
+                        "لا تغلق الصفقة بدون تقييمات المتخصصين",
+                        "تفاوض بشدة - هذا العقار يحتاج أكثر من 100,000 دولار في الإصلاحات",
+                        "اطلب رصيد من البائع بقيمة 50,000-80,000 دولار أو خفض سعر الشراء",
+                        "فكر في الانسحاب ما لم يكن بخصم كبير",
+                        "تحقق من توفر التأمين (الأسلاك القديمة قد تكون مشكلة)"
+                    ],
+                    
+                    bottomLine: "الخلاصة",
+                    bottomText: "بسعر العقد الحالي البالغ 400,000 دولار، ستحتاج إلى 8-20٪ إضافية فوراً فقط لجعل العقار آمناً. هذا شراء عالي المخاطر يتطلب رأس مال كبير بالإضافة إلى سعر الشراء.",
+                    
+                    totalRepairs: "إجمالي تكاليف الإصلاح المقدرة",
+                    repairRange: "100,000 - 200,000+ دولار على مدى 5 سنوات",
+                    year1Range: "35,000 - 90,000 دولار مطلوب في السنة الأولى"
+                }
+            };
+            
+            const t = content[lang];
+            const isRTL = lang === 'ar';
+            
+            return (
+                <div className={`min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 ${isRTL ? 'rtl' : 'ltr'}`} dir={isRTL ? 'rtl' : 'ltr'}>
+                    {/* Header */}
+                    <div className="bg-gradient-to-r from-red-600 to-red-700 text-white shadow-lg">
+                        <div className="max-w-6xl mx-auto px-4 py-6">
+                            <div className="flex justify-between items-center">
+                                <div>
+                                    <h1 className="text-3xl font-bold mb-2">{t.title}</h1>
+                                    <p className="text-red-100">{t.address}</p>
+                                    <p className="text-red-100 text-sm">{t.date}</p>
+                                </div>
+                                <button
+                                    onClick={() => setLang(lang === 'en' ? 'ar' : 'en')}
+                                    className="flex items-center gap-2 bg-white text-red-600 px-4 py-2 rounded-lg hover:bg-red-50 transition-colors font-semibold"
+                                >
+                                    <Globe size={20} />
+                                    {lang === 'en' ? 'العربية' : 'English'}
+                                </button>
+                            </div>
+                            <div className="mt-4 bg-red-800 rounded-lg p-3">
+                                <p className="text-lg font-semibold">{t.contract}</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div className="max-w-6xl mx-auto px-4 py-8">
+                        {/* Executive Summary */}
+                        <div className="bg-white rounded-xl shadow-lg p-6 mb-6">
+                            <h2 className="text-2xl font-bold text-slate-800 mb-4 border-b-2 border-red-500 pb-2">
+                                {t.execSummary}
+                            </h2>
+                            <p className="text-slate-700 text-lg leading-relaxed">{t.execText}</p>
+                        </div>
+                        
+                        {/* Critical Safety Hazards */}
+                        <div className="bg-red-50 border-2 border-red-500 rounded-xl shadow-lg p-6 mb-6">
+                            <div className="flex items-center gap-3 mb-4">
+                                <div className="w-3 h-3 bg-red-600 rounded-full animate-pulse"></div>
+                                <h2 className="text-2xl font-bold text-red-800">{t.critical}</h2>
+                            </div>
+                            <p className="text-red-700 font-semibold mb-6">{t.criticalSub}</p>
+                            
+                            {/* Structural */}
+                            <div className="mb-6">
+                                <h3 className="text-xl font-bold text-red-700 mb-3 flex items-center gap-2">
+                                    🏗️ {t.structural}
+                                </h3>
+                                <ul className="space-y-2">
+                                    {t.structuralItems.map((item, idx) => (
+                                        <li key={idx} className="flex gap-3">
+                                            <span className="text-red-600 font-bold">•</span>
+                                            <span className="text-slate-700">{item}</span>
+                                        </li>
+        
