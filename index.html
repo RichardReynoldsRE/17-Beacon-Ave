@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Inspection Report - 17 Beacon Ave, Auburn, ME</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #334155;
+        }
+        
+        [dir="rtl"] {
+            direction: rtl;
+        }
+        
+        /* Utilities */
+        .container {
+            max-width: 1152px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .bg-gradient-red {
+            background: linear-gradient(to right, #dc2626, #b91c1c);
+        }
+        
+        .bg-gradient-light {
+            background: linear-gradient(to bottom right, #f8fafc, #e2e8f0);
+            min-height: 100vh;
+        }
+        
+        .text-white { color: white; }
+        .text-red-100 { color: #fee2e2; }
+        .text-red-600 { color: #dc2626; }
+        .text-red-700 { color: #b91c1c; }
+        .text-red-800 { color: #991b1b; }
+        .text-orange-600 { color: #ea580c; }
+        .text-orange-800 { color: #9a3412; }
+        .text-yellow-600 { color: #ca8a04; }
+        .text-yellow-800 { color: #854d0e; }
+        .text-blue-600 { color: #2563eb; }
+        .text-blue-700 { color: #1d4ed8; }
+        .text-blue-800 { color: #1e40af; }
+        .text-green-600 { color: #16a34a; }
+        .text-green-800 { color: #166534; }
+        .text-purple-700 { color: #7e22ce; }
+        .text-purple-900 { color: #581c87; }
+        .text-slate-400 { color: #94a3b8; }
+        .text-slate-600 { color: #475569; }
+        .text-slate-700 { color: #334155; }
+        .text-slate-800 { color: #1e293b; }
+        
+        .bg-white { background-color: white; }
+        .bg-red-50 { background-color: #fef2f2; }
+        .bg-red-100 { background-color: #fee2e2; }
+        .bg-red-600 { background-color: #dc2626; }
+        .bg-red-800 { background-color: #991b1b; }
+        .bg-orange-100 { background-color: #ffedd5; }
+        .bg-orange-600 { background-color: #ea580c; }
+        .bg-yellow-100 { background-color: #fef9c3; }
+        .bg-yellow-600 { background-color: #ca8a04; }
+        .bg-blue-50 { background-color: #eff6ff; }
+        .bg-green-50 { background-color: #f0fdf4; }
+        .bg-purple-100 { background-color: #f3e8ff; }
+        .bg-purple-200 { background-color: #e9d5ff; }
+        .bg-purple-300 { background-color: #d8b4fe; }
+        .bg-slate-800 { background-color: #1e293b; }
+        
+        .border-red-500 { border-color: #ef4444; }
+        .border-orange-500 { border-color: #f97316; }
+        .border-purple-500 { border-color: #a855f7; }
+        .border-blue-500 { border-color: #3b82f6; }
+        .border-green-500 { border-color: #22c55e; }
+        .border-red-600 { border-color: #dc2626; }
+        .border-orange-600 { border-color: #ea580c; }
+        .border-yellow-600 { border-color: #ca8a04; }
+        
+        /* Layout */
+        .header {
+            padding: 1.5rem 0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .contract-box {
+            background-color: #991b1b;
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            margin-top: 1rem;
+        }
+        
+        .lang-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: white;
+            color: #dc2626;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .lang-btn:hover {
+            background-color: #fef2f2;
+        }
+        
+        .main-content {
+            padding: 2rem 0;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid;
+        }
+        
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .tier-box {
+            border-radius: 0.5rem;
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid;
+        }
+        
+        .tier-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 0.75rem;
+        }
+        
+        .cost-badge {
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+        
+        .cost-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        li {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .pulse-dot {
+            width: 0.75rem;
+            height: 0.75rem;
+            background-color: #dc2626;
+            border-radius: 9999px;
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .footer {
+            background-color: #1e293b;
+            color: white;
+            padding: 1.5rem 0;
+            text-align: center;
+        }
+        
+        .alert-box {
+            border: 2px solid;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .bottom-line-box {
+            background: linear-gradient(to right, #dc2626, #b91c1c);
+            color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .white-box {
+            background-color: white;
+            color: #1e293b;
+            border-radius: 0.5rem;
+            padding: 1.25rem;
+            margin-top: 1.5rem;
+        }
+        
+        h1 { font-size: 1.875rem; font-weight: bold; margin-bottom: 0.5rem; }
+        h2 { font-size: 1.5rem; font-weight: bold; }
+        h3 { font-size: 1.25rem; font-weight: bold; }
+        
+        .text-sm { font-size: 0.875rem; }
+        .text-lg { font-size: 1.125rem; }
+        .text-xl { font-size: 1.25rem; }
+        .text-2xl { font-size: 1.5rem; }
+        
+        .font-semibold { font-weight: 600; }
+        .font-bold { font-weight: 700; }
+        
+        .mb-2 { margin-bottom: 0.5rem; }
+        .mb-3 { margin-bottom: 0.75rem; }
+        .mb-4 { margin-bottom: 1rem; }
+        .mb-6 { margin-bottom: 1.5rem; }
+        
+        .space-y-2 > * + * { margin-top: 0.5rem; }
+        .space-y-3 > * + * { margin-top: 0.75rem; }
+        
+        .leading-relaxed { line-height: 1.625; }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .tier-header {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .cost-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script>
+        let currentLang = 'en';
+        
+        const content = {
+            en: {
+                title: "Home Inspection Analysis",
+                address: "17 Beacon Ave, Auburn, ME 04210",
+                date: "Inspection Date: October 16, 2025",
+                contract: "Current Contract: $400,000",
+                execSummary: "Executive Summary",
+                execText: "This 1904 multi-family property (3 units) has extensive and significant issues across nearly every major system. Many findings represent serious safety hazards and major structural concerns. This property will require substantial investment beyond the purchase price.",
+                critical: "CRITICAL SAFETY HAZARDS",
+                criticalSub: "Immediate Attention Required",
+                structural: "Structural Integrity",
+                structuralItems: [
+                    "Major foundation damage and wall bowing - Significant structural movement requiring structural engineer evaluation",
+                    "Garage is unsafe - Marked for removal or major structural repairs",
+                    "Deck support posts are unsecured - Shifted and lack proper footings below frost line"
+                ],
+                electrical: "Electrical System",
+                electricalItems: [
+                    "Ungrounded 3-prong outlets - Users believe they're protected when they're not",
+                    "Outdated knob & tube wiring - May affect insurance eligibility",
+                    "Loose wires and exposed electrical components - Multiple shock/fire hazards",
+                    "Service inadequate for building - Undersized for modern needs",
+                    "Missing GFCI protection in wet areas",
+                    "Missing AFCI protection in bedrooms"
+                ],
+                fire: "Fire/Carbon Monoxide Risks",
+                fireItems: [
+                    "Smoke detectors over 10 years old - Need replacement",
+                    "Missing/inadequate smoke detector coverage",
+                    "No carbon monoxide detectors in required locations",
+                    "Chimney severely deteriorated - Brick and mortar damage",
+                    "Furnace vent not properly sealed - Toxic gases can enter living space",
+                    "Inoperable fireplace damper - Cannot safely vent combustion products"
+                ],
+                water: "Water Hazards",
+                waterItems: [
+                    "Hot water exceeding 139°F in multiple units (scalding risk - safe limit is 125°F)",
+                    "Scalding can occur in seconds at these temperatures"
+                ],
+                health: "Health Hazards",
+                healthItems: [
+                    "Suspected mold in multiple locations throughout all units",
+                    "Bat infestation evidence (Apt 2) - Potential rabies/histoplasmosis risk",
+                    "Significant rodent activity throughout",
+                    "Possible asbestos flooring (pre-1973 materials)"
+                ],
+                immediate: "IMMEDIATE REPAIR PRIORITIES",
+                immediateSub: "Safety & Habitability Issues",
+                tier1: "TIER 1: Critical Safety (Before Closing)",
+                tier1Cost: "$6,000 - $16,500",
+                tier1Items: [
+                    "Electrical Safety: Loose wires, missing covers, damaged receptacles",
+                    "Scalding Water: Adjust boiler temperature to safe levels",
+                    "Structural Safety: Secure deck posts and railings",
+                    "Fire/CO Safety: Install/replace smoke and CO detectors"
+                ],
+                tier2: "TIER 2: Urgent Repairs (30-60 Days)",
+                tier2Cost: "$10,000 - $26,000",
+                tier2Items: [
+                    "Mold Assessment & Remediation throughout building",
+                    "Pest Control: Bat and rodent removal",
+                    "Active Water Leaks: Find source and repair damage",
+                    "Plumbing Safety: Sewage pump, fixtures, shower panels",
+                    "Electrical GFCI Protection in wet areas",
+                    "Heating System: Service boiler, test oil tank"
+                ],
+                tier3: "TIER 3: High Priority (90 Days)",
+                tier3Cost: "$15,000 - $35,000",
+                tier3Items: [
+                    "Exterior Water Prevention: Downspouts, gutters, roofing",
+                    "Foundation Drainage: Grading, moisture barriers",
+                    "Window Safety: Replace cracked glass, repair sills",
+                    "Chimney Safety: Masonry repairs, install cap",
+                    "Exterior Rot: Address critical water entry areas"
+                ],
+                totalImmediate: "TOTAL IMMEDIATE REPAIRS (90 days)",
+                totalCost: "$31,000 - $77,500",
+                assessments: "Required Professional Assessments",
+                assessmentsCost: "$2,500 - $4,700",
+                assessmentItems: [
+                    "Licensed Electrician Full Evaluation: $500-$1,000",
+                    "Licensed Plumber Full Evaluation: $500-$1,000",
+                    "Structural Engineer Assessment: $800-$1,500",
+                    "Professional Mold Inspection: $500-$800",
+                    "Pest Inspection (Bats/Rodents): $200-$400"
+                ],
+                costs: "COST IMPLICATIONS",
+                immediateCosts: ["Immediate (Pre-Closing)", "$5,000-$15,000+"],
+                year1Costs: ["Short-Term (Year 1)", "$30,000-$75,000+"],
+                year2to5Costs: ["Medium-Term (Years 2-5)", "$50,000-$100,000+"],
+                recommendations: "RECOMMENDATIONS",
+                recItems: [
+                    "Do NOT close without specialist evaluations",
+                    "Negotiate heavily - This property needs $100,000+ in repairs",
+                    "Request seller credit of $50,000-$80,000 OR reduce purchase price",
+                    "Consider walking away unless deeply discounted",
+                    "Verify insurance availability (knob & tube wiring may be an issue)"
+                ],
+                bottomLine: "BOTTOM LINE",
+                bottomText: "At your current contract price of $400,000, you're looking at needing an additional 8-20% immediately just to make the property safe. This is a high-risk purchase requiring substantial capital beyond the purchase price.",
+                totalRepairs: "Estimated Total Repair Costs",
+                repairRange: "$100,000 - $200,000+ over 5 years",
+                year1Range: "$35,000 - $90,000 needed in Year 1",
+                footer: "Professional Home Inspection Analysis - For informational purposes only"
+            },
+            ar: {
+                title: "تحليل تقرير فحص المنزل",
+                address: "17 شارع بيكون، أوبورن، مين 04210",
+                date: "تاريخ الفحص: 16 أكتوبر 2025",
+                contract: "قيمة العقد الحالي: 400,000 دولار",
+                execSummary: "الملخص التنفيذي",
+                execText: "هذا العقار متعدد العائلات المبني عام 1904 (3 وحدات) يحتوي على مشاكل واسعة وخطيرة في جميع الأنظمة الرئيسية تقريباً. العديد من النتائج تمثل مخاطر سلامة خطيرة ومخاوف هيكلية كبيرة. سيتطلب هذا العقار استثماراً كبيراً بالإضافة إلى سعر الشراء.",
+                critical: "مخاطر السلامة الحرجة",
+                criticalSub: "تتطلب اهتماماً فورياً",
+                structural: "السلامة الهيكلية",
+                structuralItems: [
+                    "أضرار كبيرة في الأساس وانحناء الجدار - حركة هيكلية كبيرة تتطلب تقييم مهندس إنشائي",
+                    "المرآب غير آمن - يحتاج إلى إزالة أو إصلاحات هيكلية كبيرة",
+                    "أعمدة دعم السطح غير مثبتة - متحركة وتفتقر إلى قواعد مناسبة تحت خط الصقيع"
+                ],
+                electrical: "النظام الكهربائي",
+                electricalItems: [
+                    "مقابس 3 أطراف غير مؤرضة - يعتقد المستخدمون أنهم محميون بينما هم ليسوا كذلك",
+                    "أسلاك قديمة - قد تؤثر على أهلية التأمين",
+                    "أسلاك مفكوكة ومكونات كهربائية مكشوفة - مخاطر صدمة/حريق متعددة",
+                    "الخدمة غير كافية للمبنى - صغيرة جداً للاحتياجات الحديثة",
+                    "حماية GFCI مفقودة في المناطق الرطبة",
+                    "حماية AFCI مفقودة في غرف النوم"
+                ],
+                fire: "مخاطر الحريق/أول أكسيد الكربون",
+                fireItems: [
+                    "أجهزة كشف الدخان أكثر من 10 سنوات - تحتاج للاستبدال",
+                    "تغطية غير كافية لكاشفات الدخان",
+                    "لا توجد كاشفات أول أكسيد الكربون في المواقع المطلوبة",
+                    "مدخنة متدهورة بشدة - تلف في الطوب والملاط",
+                    "فتحة تهوية الفرن غير محكمة الإغلاق - يمكن للغازات السامة دخول المساحة المعيشية",
+                    "صمام مدخنة المدفأة لا يعمل - لا يمكن تهوية منتجات الاحتراق بأمان"
+                ],
+                water: "مخاطر المياه",
+                waterItems: [
+                    "المياه الساخنة تتجاوز 139 درجة فهرنهايت في وحدات متعددة (خطر الحروق - الحد الآمن 125 درجة فهرنهايت)",
+                    "يمكن أن تحدث حروق خطيرة في ثوانٍ عند هذه درجات الحرارة"
+                ],
+                health: "المخاطر الصحية",
+                healthItems: [
+                    "عفن مشتبه به في مواقع متعددة في جميع الوحدات",
+                    "دليل على إصابة بالخفافيش (الشقة 2) - خطر محتمل من داء الكلب/داء النوسجات",
+                    "نشاط كبير للقوارض في جميع الأنحاء",
+                    "أرضيات أسبستوس محتملة (مواد ما قبل 1973)"
+                ],
+                immediate: "أولويات الإصلاح الفورية",
+                immediateSub: "قضايا السلامة والصلاحية للسكن",
+                tier1: "المستوى الأول: السلامة الحرجة (قبل الإغلاق)",
+                tier1Cost: "6,000 - 16,500 دولار",
+                tier1Items: [
+                    "السلامة الكهربائية: أسلاك مفكوكة، أغطية مفقودة، مقابس تالفة",
+                    "المياه الساخنة: ضبط حرارة المرجل إلى مستويات آمنة",
+                    "السلامة الهيكلية: تأمين أعمدة ودرابزين السطح",
+                    "سلامة الحريق/أول أكسيد الكربون: تركيب/استبدال كاشفات الدخان وأول أكسيد الكربون"
+                ],
+                tier2: "المستوى الثاني: إصلاحات عاجلة (30-60 يوماً)",
+                tier2Cost: "10,000 - 26,000 دولار",
+                tier2Items: [
+                    "تقييم ومعالجة العفن في جميع أنحاء المبنى",
+                    "مكافحة الآفات: إزالة الخفافيش والقوارض",
+                    "تسربات المياه النشطة: العثور على المصدر وإصلاح الضرر",
+                    "سلامة السباكة: مضخة الصرف الصحي، التركيبات، لوحات الدش",
+                    "حماية GFCI الكهربائية في المناطق الرطبة",
+                    "نظام التدفئة: صيانة المرجل، اختبار خزان الزيت"
+                ],
+                tier3: "المستوى الثالث: أولوية عالية (90 يوماً)",
+                tier3Cost: "15,000 - 35,000 دولار",
+                tier3Items: [
+                    "منع المياه الخارجية: مصارف المطر، المزاريب، الأسقف",
+                    "صرف الأساس: التدرج، حواجز الرطوبة",
+                    "سلامة النوافذ: استبدال الزجاج المتشقق، إصلاح العتبات",
+                    "سلامة المدخنة: إصلاحات البناء، تركيب غطاء",
+                    "التعفن الخارجي: معالجة مناطق دخول المياه الحرجة"
+                ],
+                totalImmediate: "إجمالي الإصلاحات الفورية (90 يوماً)",
+                totalCost: "31,000 - 77,500 دولار",
+                assessments: "التقييمات المهنية المطلوبة",
+                assessmentsCost: "2,500 - 4,700 دولار",
+                assessmentItems: [
+                    "تقييم كامل من كهربائي مرخص: 500-1,000 دولار",
+                    "تقييم كامل من سباك م
